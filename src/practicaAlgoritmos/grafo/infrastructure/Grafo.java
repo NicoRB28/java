@@ -13,7 +13,7 @@ public interface Grafo<T> {
 	public List<Vertice<T>> listOfVertex();
 	public List<Arista<T>> listOfAdjacents(Vertice<T> vertice);
 	public Vertice<T> getVertex(int nroVertice);
-	public int getWeight(Vertice<T> vertice);
+	public int getWeight(Vertice<T> verticeOrigen, Vertice<T> verticeDestino);
 	public boolean isEmpty();
 	
 	

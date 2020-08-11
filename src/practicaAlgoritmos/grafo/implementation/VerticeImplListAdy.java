@@ -1,6 +1,6 @@
 package practicaAlgoritmos.grafo.implementation;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import practicaAlgoritmos.grafo.infrastructure.Arista;
@@ -14,7 +14,7 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 	
 	public VerticeImplListAdy(T value) {
 		this.value = value;
-		this.adjacents = new ArrayList<Arista<T>>();
+		this.adjacents = new LinkedList<Arista<T>>();
 	}
 	
 	@Override
