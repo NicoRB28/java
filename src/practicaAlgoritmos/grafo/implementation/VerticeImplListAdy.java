@@ -69,7 +69,7 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 		// TODO Auto-generated method stub
 		Arista<T> arista = this.getArista(vertice);
 		if(arista != null) {
-			this.adjacents.remove(vertice);
+			this.adjacents.remove(arista);
 		}
 	}
 
@@ -80,7 +80,7 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 	}
 	
 	public boolean isAdjacent(Vertice<T> vertice) {
-		return this.adjacents.contains(vertice);
+		return this.adjacents.contains(this.getArista(vertice));
 	}
 	
 	public int getWeight(Vertice<T> v) {
