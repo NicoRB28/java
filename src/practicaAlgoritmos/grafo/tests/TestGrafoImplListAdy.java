@@ -1,18 +1,16 @@
-package practicaAlgoritmos.grafo.tests;
+package src.practicaAlgoritmos.grafo.tests;
 
-import practicaAlgoritmos.grafo.implementation.GrafoImplListAdy;
-import practicaAlgoritmos.grafo.implementation.VerticeImplListAdy;
-import practicaAlgoritmos.grafo.infrastructure.Arista;
-import practicaAlgoritmos.grafo.infrastructure.Vertice;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import practicaAlgoritmos.grafo.implementation.GrafoImplListAdy;
+import practicaAlgoritmos.grafo.implementation.VerticeImplListAdy;
+import src.practicaAlgoritmos.grafo.infrastructure.Arista;
 
 public class TestGrafoImplListAdy {
 	GrafoImplListAdy<Integer> grafo;

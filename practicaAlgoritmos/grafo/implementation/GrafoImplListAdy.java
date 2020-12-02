@@ -3,9 +3,9 @@ package practicaAlgoritmos.grafo.implementation;
 import java.util.LinkedList;
 import java.util.List;
 
-import practicaAlgoritmos.grafo.infrastructure.Arista;
-import practicaAlgoritmos.grafo.infrastructure.Grafo;
-import practicaAlgoritmos.grafo.infrastructure.Vertice;
+import src.practicaAlgoritmos.grafo.infrastructure.Arista;
+import src.practicaAlgoritmos.grafo.infrastructure.Grafo;
+import src.practicaAlgoritmos.grafo.infrastructure.Vertice;
 
 public class GrafoImplListAdy<T> implements Grafo<T> {
 	

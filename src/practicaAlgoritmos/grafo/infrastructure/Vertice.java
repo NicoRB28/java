@@ -1,4 +1,4 @@
-package practicaAlgoritmos.grafo.infrastructure;
+package src.practicaAlgoritmos.grafo.infrastructure;
 
 import java.util.List;
 
