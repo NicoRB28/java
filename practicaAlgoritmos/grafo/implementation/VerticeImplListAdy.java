@@ -19,7 +19,6 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 	
 	@Override
 	public T getValue() {
-		// TODO Auto-generated method stub
 		return this.value;
 	}
 	
@@ -29,19 +28,16 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 	
 	@Override
 	public int getPosition() {
-		// TODO Auto-generated method stub
 		return this.position;
 	}
 
 	@Override
 	public void setPosition(int pos) {
-		// TODO Auto-generated method stub
 		this.position = pos;
 	}
 
 	@Override
 	public void conect(Vertice<T> vertice) {
-		// TODO Auto-generated method stub
 		this.conect(vertice, 1);
 		
 	}
@@ -55,18 +51,14 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 	}
 	
 	private Arista<T> getArista(Vertice<T> vertice){
-		for(Arista<T> arista : this.adjacents) {
-			if(arista.getDestinationVertex() == vertice) {
-				return arista;
-			}
-		}
-		return null;
+		return this.adjacents.stream()
+					  .filter(arist -> arist.getDestinationVertex() == vertice)
+					  .findFirst().orElse(null);
 	}
 
 
 	@Override
 	public void disconect(Vertice<T> vertice) {
-		// TODO Auto-generated method stub
 		Arista<T> arista = this.getArista(vertice);
 		if(arista != null) {
 			this.adjacents.remove(arista);
@@ -75,7 +67,6 @@ public class VerticeImplListAdy<T> implements Vertice<T> {
 
 	@Override
 	public List<Arista<T>> getAdjacents() {
-		// TODO Auto-generated method stub
 		return this.adjacents;
 	}
 	

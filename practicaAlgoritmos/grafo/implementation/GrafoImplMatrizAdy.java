@@ -2,6 +2,7 @@ package practicaAlgoritmos.grafo.implementation;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import src.practicaAlgoritmos.grafo.infrastructure.Arista;
 import src.practicaAlgoritmos.grafo.infrastructure.Grafo;
@@ -20,11 +21,9 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 	}
 	
 	private void initializeMatriz(int[][] matriz) {
-		for(int i = 0; i < maxVertices; i++) {
-			for(int j = 0; j < maxVertices; i++) {
-				matrizAdy[i][j] = 0;
-			}
-		}
+		IntStream.rangeClosed(0, this.maxVertices)
+				 .forEach(i -> IntStream.rangeClosed(0, this.maxVertices)
+						 				.forEach(j -> this.matrizAdy[i][j]=0));
 		
 	}
 
@@ -40,16 +39,15 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 
 	@Override
 	public void eliminateVertex(Vertice<T> vertice) {
-		// TODO Auto-generated method stub
 		int index = vertice.getPosition();
-		for(int fila = index; fila < vertices.size(); fila++) {
-			matrizAdy[fila] = matrizAdy[fila+1];
-		}
-		for (int fila = 0; fila < vertices.size();fila++) {
-			for(int col = index; col<vertices.size(); col++) {
-				matrizAdy[fila][col] = matrizAdy[fila][col+1];
-			}
-		}
+		
+		IntStream.range(index, this.vertices.size())
+				 .forEach(fila -> this.matrizAdy[fila] = this.matrizAdy[fila+1]);
+		
+		IntStream.range(0,this.vertices.size())
+		 		 .forEach(fila -> IntStream.range(fila, this.vertices.size())
+				 .forEach(col -> this.matrizAdy[fila][col]= this.matrizAdy[fila][col+1]));
+		
 		vertices.remove(vertice);
 	}
 
@@ -87,35 +85,29 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 
 	@Override
 	public List<Arista<T>> listOfAdjacents(Vertice<T> vertice) {
-		// TODO Auto-generated method stub
 		LinkedList<Arista<T>> listaAdyacentes = new LinkedList<Arista<T>>();
 		int posicionVertice = vertice.getPosition();
-		Arista<T> arista;
-		for(int i = 0; i < vertices.size(); i++) {
-			if(matrizAdy[posicionVertice][i] > 0) {
-				arista = new AristaImplementation<T>(vertices.get(i), matrizAdy[posicionVertice][i]);
-				listaAdyacentes.add(arista);
-			}
-		}
+		
+		IntStream.range(0, this.vertices.size())
+				 .filter(index -> this.matrizAdy[posicionVertice][index] > 0)
+				 .mapToObj(index -> new AristaImplementation<T>(this.vertices.get(index),this.matrizAdy[posicionVertice][index]))
+				 .map(ari -> listaAdyacentes.add(ari));
 		
 		return listaAdyacentes;
 	}
 
 	@Override
 	public Vertice<T> getVertex(int nroVertice) {
-		// TODO Auto-generated method stub
 		return vertices.get(nroVertice);
 	}
 
 	@Override
 	public int getWeight(Vertice<T> verticeOrigen, Vertice<T> verticeDestino) {
-		// TODO Auto-generated method stub
 		return matrizAdy[verticeOrigen.getPosition()][verticeDestino.getPosition()];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		return vertices.isEmpty();
 	}
 	
