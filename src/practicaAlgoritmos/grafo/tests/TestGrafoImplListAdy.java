@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import practicaAlgoritmos.grafo.implementation.GrafoImplListAdy;
@@ -15,14 +16,9 @@ import src.practicaAlgoritmos.grafo.infrastructure.Arista;
 public class TestGrafoImplListAdy {
 	GrafoImplListAdy<Integer> grafo;
 	
-	@Before
-	public void setUp() throws Exception{
-		grafo = new GrafoImplListAdy<Integer>();
-	}
-	
 	@Test
 	public void testAgregarYEliminarVertice() {
-		
+		grafo = new GrafoImplListAdy<Integer>();
 		int tamAntes = grafo.listOfVertex().size();
 		VerticeImplListAdy<Integer> vertice1 = new VerticeImplListAdy<Integer>(1);
 		VerticeImplListAdy<Integer> vertice2 = new VerticeImplListAdy<Integer>(2);
@@ -47,6 +43,7 @@ public class TestGrafoImplListAdy {
 	
 	@Test
 	public void testConectarYDesconectar() {
+		grafo = new GrafoImplListAdy<Integer>();
 		VerticeImplListAdy<Integer> vert1 = new VerticeImplListAdy<Integer>(1);
 		VerticeImplListAdy<Integer> vert2 = new VerticeImplListAdy<Integer>(2);
 		grafo.addVertex(vert1);
