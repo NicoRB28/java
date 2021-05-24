@@ -29,7 +29,6 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 
 	@Override
 	public void addVertex(Vertice<T> vertice) {
-		// TODO Auto-generated method stub
 		if(!vertices.contains(vertice)) {
 			vertices.add(vertice);
 			vertice.setPosition(vertices.indexOf(vertice));
@@ -53,33 +52,28 @@ public class GrafoImplMatrizAdy<T> implements Grafo<T> {
 
 	@Override
 	public void conect(Vertice<T> verticeOrigen, Vertice<T> verticeDestino) {
-		// TODO Auto-generated method stub
 		this.conectWithWeight(verticeOrigen, verticeDestino, 1);
 		
 	}
 
 	@Override
 	public void conectWithWeight(Vertice<T> verticeOrigen, Vertice<T> verticeDestino, int peso) {
-		// TODO Auto-generated method stub
 		matrizAdy[verticeOrigen.getPosition()][verticeDestino.getPosition()] = peso;
 		
 	}
 
 	@Override
 	public void disconect(Vertice<T> verticeOrigen, Vertice<T> verticeDestino) {
-		// TODO Auto-generated method stub
 		matrizAdy[verticeOrigen.getPosition()][verticeDestino.getPosition()] = 0;
 	}
 
 	@Override
 	public boolean isAdjacent(Vertice<T> verticeOrigen, Vertice<T> verticeDestino) {
-		// TODO Auto-generated method stub
 		return matrizAdy[verticeOrigen.getPosition()][verticeDestino.getPosition()] > 0;
 	}
 
 	@Override
 	public List<Vertice<T>> listOfVertex() {
-		// TODO Auto-generated method stub
 		return vertices;
 	}
 
